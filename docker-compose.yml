@@ -1,0 +1,5 @@
+services:
+  lunch:
+    build: .
+    ports:
+      - "18221:80"
