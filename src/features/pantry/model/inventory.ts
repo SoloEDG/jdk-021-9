@@ -17,12 +17,14 @@ export function restock(g: Game, i: Ingredient) {
     return;
   }
   g.stock[i] = Math.min(12, g.stock[i] + 3);
+  const n = g.entries.filter((e) => e.ref?.startsWith(`supply:${i}:`)).length + 1;
   g.entries.push({
     id: g.nextId++,
     time: g.time,
     label: `采购${ingredients[i].name} ×3`,
     amount: -ingredients[i].cost * 3,
     kind: "supply",
+    ref: `supply:${i}:${n}`,
   });
   g.notice = "已购入3份食材，费用计入账本";
 }

@@ -41,6 +41,11 @@ export interface Entry {
   label: string;
   amount: number;
   kind: "sale" | "waste" | "miss" | "supply";
+  /**
+   * 业务主键（如 order:5 / dish:12 / supply:beef:2），
+   * 用于回放分叉后跨时间线逐笔对齐账本。
+   */
+  ref?: string;
 }
 export interface Game {
   time: number;

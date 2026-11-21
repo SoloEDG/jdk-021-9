@@ -16,6 +16,7 @@ export function discard(g: Game, id: number) {
     label: "丢弃菜品",
     amount: -3,
     kind: "waste",
+    ref: `dish:${id}`,
   });
   g.notice = "已丢弃，浪费成本 ¥3";
 }

@@ -834,3 +834,203 @@ footer {
     font-size: 8px;
   }
 }
+
+/* ——— 营业回放 / 分叉演练 ——— */
+.replay-panel {
+  margin-top: 26px;
+}
+.replay-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.import-label {
+  display: inline-block;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.replay-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 4px 0 14px;
+}
+.replay-tabs button {
+  background: #e7e2d2;
+  color: #33463c;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+.replay-tabs button.active {
+  background: #254d3d;
+  color: #fff;
+}
+.replay-message {
+  font-size: 11px;
+  color: #8a6d3b;
+  background: #fdf6e3;
+  border: 1px solid #eee0bd;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.scrub-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 16px;
+}
+.scrub-row input[type="range"] {
+  flex: 1;
+  accent-color: #254d3d;
+}
+.time-chip {
+  font-variant-numeric: tabular-nums;
+  background: #203e33;
+  color: #f7f1d9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.restoring {
+  font-size: 10px;
+  color: #c17a3d;
+  white-space: nowrap;
+}
+.state-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.state-card {
+  background: #fbf9f1;
+  border: 1px solid #e3ddc9;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.state-card h3 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #879489;
+}
+.state-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  padding: 3px 0;
+  border-bottom: 1px dashed #efead9;
+}
+.state-row:last-child {
+  border-bottom: 0;
+}
+.event-list {
+  max-height: 250px;
+  overflow: auto;
+  border: 1px solid #e3ddc9;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+.event-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0ecdd;
+}
+.event-row:hover {
+  background: #f3efe0;
+}
+.event-row.future {
+  opacity: 0.35;
+}
+.e-time {
+  width: 44px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #879489;
+  flex: none;
+}
+.fork-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 4px;
+  flex-wrap: wrap;
+}
+.diff-box {
+  margin-top: 16px;
+}
+.diff-box h3 {
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+.divergence {
+  background: #fdf3e3;
+  border: 1px solid #f0dcb8;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+}
+.diff-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.diff-box th,
+.diff-box td {
+  padding: 5px 8px;
+  border-bottom: 1px solid #ece7d6;
+  text-align: right;
+}
+.diff-box th:first-child,
+.diff-box td:first-child {
+  text-align: left;
+}
+.diff-box tfoot td {
+  font-weight: 700;
+  border-bottom: 0;
+}
+.pos {
+  color: #2b7a4b;
+}
+.neg {
+  color: #b6482e;
+}
+.drill-banner {
+  background: #eaf3ec;
+  border: 1px solid #cfe0d2;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.drill-controls {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 14px;
+  flex-wrap: wrap;
+}
+.drill-notice {
+  margin-bottom: 14px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.result-actions .outline {
+  background: transparent;
+  color: #254d3d;
+  border: 1px solid #254d3d;
+}

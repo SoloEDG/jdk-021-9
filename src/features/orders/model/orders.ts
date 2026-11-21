@@ -20,6 +20,7 @@ export function expire(g: Game) {
         label: `${o.guest} 等待超时`,
         amount: -5,
         kind: "miss",
+        ref: `order:${o.id}`,
       });
       g.notice = `${o.guest} 离店，损失 ¥5`;
     }

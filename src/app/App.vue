@@ -1,12 +1,18 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useSession } from "./session";
-import { dispatch } from "./commands";
 import { OrdersPanel } from "../features/orders";
 import { PantryPanel } from "../features/pantry";
 import { KitchenPanel } from "../features/kitchen";
 import { ServicePanel } from "../features/service";
 import { LedgerPanel, ResultOverlay, totals } from "../features/ledger";
-const { game, toggle, restart } = useSession();
+import { ReplayPanel } from "../features/replay";
+const { game, toggle, restart, runCommand, replayStore, player } = useSession();
+const resultDismissed = ref(false);
+function handleRestart() {
+  resultDismissed.value = false;
+  restart();
+}
 </script>
 <template>
   <div class="app-shell">
@@ -30,7 +36,7 @@ const { game, toggle, restart } = useSession();
           ><span>{{
             game.running ? "正在营业" : game.ended ? "今日打烊" : "准备开门"
           }}</span
-          ><button class="outline" @click="restart">重新开局</button>
+          ><button class="outline" @click="handleRestart">重新开局</button>
         </div>
       </header>
       <div class="hero">
@@ -79,26 +85,32 @@ const { game, toggle, restart } = useSession();
           >
         </div>
       </div>
-      <OrdersPanel :game="game" @command="(c) => dispatch(game, c)" />
+      <OrdersPanel :game="game" @command="runCommand" />
       <div class="workspace">
         <PantryPanel
           :game="game"
-          @command="(c) => dispatch(game, c)"
+          @command="runCommand"
         /><KitchenPanel
           :game="game"
-          @command="(c) => dispatch(game, c)"
-        /><ServicePanel :game="game" @command="(c) => dispatch(game, c)" />
+          @command="runCommand"
+        /><ServicePanel :game="game" @command="runCommand" />
       </div>
       <div class="notice" role="status">
         <span>✦ 主厨提示</span>{{ game.notice }}
       </div>
       <LedgerPanel :game="game" />
+      <ReplayPanel :store="replayStore" :player="player" />
       <footer>
         好食材，好火候，好心情。<span
           >午市厨房 / LUNCH RUSH · 180 秒的小小餐厅</span
         >
       </footer>
     </main>
-    <ResultOverlay :game="game" @restart="restart" />
+    <ResultOverlay
+      :game="game"
+      :dismissed="resultDismissed"
+      @restart="handleRestart"
+      @dismiss="resultDismissed = true"
+    />
   </div>
 </template>

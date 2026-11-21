@@ -31,6 +31,7 @@ export function deliver(g: Game) {
     label: `${order.guest} · ${recipes[dish.recipe].name}`,
     amount,
     kind: "sale",
+    ref: `order:${order.id}`,
   });
   g.dishes = g.dishes.filter((d) => d.id !== dish.id);
   g.selectedDish = null;
